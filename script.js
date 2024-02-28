@@ -1,3 +1,15 @@
+const help = document.getElementById("helpIcon");
+const cancel = document.getElementById("cancelIcon");
+
+help.addEventListener("click", function(){
+    document.getElementById("helpCard").style.display = 'block';
+    document.getElementById('blurBackground').style.display = 'block';
+});
+cancel.addEventListener("click", function(){
+    document.getElementById("helpCard").style.display = 'none';
+    document.getElementById('blurBackground').style.display = 'none';
+});
+
 const userInput = document.getElementById("inputBox");
 const addBtn = document.getElementById("btn");
 const container = document.getElementById("taskContainer");
