@@ -12,13 +12,14 @@ body{
 	background-size: 100% 90%;
 	background-repeat: no-repeat;
 }
+/* ------------------------------------------------------------Nav bar--------------------------------------------------------------------------------------- */
 .navbar {
 	color: white;
 	width: 100%;
 	padding: 15px;
     display: flex;
     justify-content: space-between;
-	background-color: #333;
+	background: linear-gradient(to bottom left,#0F2027,#203A43,#2C5364);
 }
 #helpIcon {
     cursor: pointer;
@@ -43,7 +44,7 @@ body{
     z-index: 1000;
 }
 .content{
-	margin: 30px 0px 0px 10px;
+	margin: 50px 0px 0px 10px;
 	font-size: 16px;
 }
 .content p{
@@ -77,6 +78,7 @@ body{
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
 }
+/* ------------------------------------------------------------Container------------------------------------------------------------------------------------- */
 #container{
     width: 90%;
     max-width: 500px;
@@ -148,10 +150,53 @@ body{
 	text-decoration: line-through;
 	transition: all 0.3s ease-in; 
 }
+.statistics{
+	width: 100%;
+	height: 100%;
+}
+.statistics h1{
+	font-size: 60px;
+	text-align: center;
+	color: aqua;
+	text-shadow: 5px 5px 15px black;
+}
+.taskStatus{
+	padding: 20px;
+	display: flex;
+	justify-content: space-around;
+}
+.taskStatus p{
+	font-weight: bold;
+	padding: 20px;
+}
+.taskStatus div{
+	width: 200px;
+	height: 300px;
+	background-color: white;
+	border-radius: 10px;
+	text-align: center;
+	box-shadow: 5px 5px 15px black;
+}
+.taskStatus .incompletedTask h1{
+	color: yellow;
+	font-size: 100px;
+	text-shadow: 1px 1px 30px black;
+}
+.taskStatus .completedTask h1{
+	color: green;
+	font-size: 100px;
+	text-shadow: 1px 1px 30px black;
+}
+.taskStatus .deletedTask h1{
+	color: red;
+	font-size: 100px;
+	text-shadow: 1px 1px 30px black;
+}
+/* ------------------------------------------------------------Footer---------------------------------------------------------------------------------------- */
 footer { 
 	width: 100%;
     color: #fff;
-	background-color: #333;
+	background: linear-gradient(to bottom left,#0F2027,#203A43,#2C5364);
     padding: 20px 0;
     text-align: center;
 	display: flex;
@@ -189,6 +234,7 @@ a{
 	color: black;
 	background-color: cyan;
 }
+/* ------------------------------------------------------------Responsive------------------------------------------------------------------------------------ -*/
 @media only screen and (max-width: 768px) {
 	body{
 		background-image: url(img/bg2.jpg);
@@ -196,7 +242,21 @@ a{
 	#helpCard{
 		padding: 0;
 		width: 300px;
-		height: 250px;
+		height: 200px;
+	}
+	.content{
+		font-size: 13px;
+		margin: 20px 0px 0px 0px;
+	}
+	.taskStatus div{
+		width: 130px;
+		height: 200px;
+	}
+	.taskStatus p{
+		font-size: 18px;
+	}
+	.taskStatus h1{
+		font-size: 10px;
 	}
 	footer {
 		flex-direction: column;
