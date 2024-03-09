@@ -9,13 +9,18 @@ cancel.addEventListener("click", function(){
     document.getElementById("helpCard").style.display = 'none';
     document.getElementById('blurBackground').style.display = 'none';
 });
-
+// ---------------------------------------------------------------------
 const userInput = document.getElementById("inputBox");
 const addBtn = document.getElementById("btn");
 const container = document.getElementById("taskContainer");
 const alertMessage = document.getElementById("alertMessage");
 
-const taskArray = [];
+const iTask = document.getElementById("iTask");
+const cTask = document.getElementById("cTask");
+const dTask = document.getElementById("dTask");
+
+const taskArray = []; 
+let deletedTasks = 0;
 
 // Function to create a new task element
 function createTask(userInput, isCompleted, taskId){
@@ -34,6 +39,8 @@ function createTask(userInput, isCompleted, taskId){
 	newElement.addEventListener("dblclick", removeTask);
 
 	container.append(newElement);
+
+	updateStatistics();
 }
 
 // Function to mark a task as completed or incomplete
@@ -49,6 +56,8 @@ function completeTask(){
 		}
 	}
 	setTask();	// Update local storage with the modified task array
+
+	updateStatistics();
 }
 
 // Function to remove a task
@@ -58,10 +67,45 @@ function removeTask(){
 	for (let i = 0; i < taskArray.length; i++) {
 		if (taskArray[i].id.toString() === taskId) {
 			taskArray.splice(i, 1);
+			deletedTasks++;
+            break;
 		}
 	}
 	setTask();	// Update local storage with the modified task array
 	this.remove();
+
+    localStorage.setItem("DeletedTasks", deletedTasks);
+
+	updateStatistics();
+}
+
+// Function to retrieve deletedTasks count from local storage
+function getDeletedTasksCount(){
+    const count = localStorage.getItem("DeletedTasks");
+
+    if(count) {
+        deletedTasks = parseInt(count);
+    }
+}
+
+// Function to update statistics
+function updateStatistics() {
+	let completedTasks = 0;
+	let incompletedTasks = 0;
+
+    taskArray.forEach(task => {
+        if (task.isCompleted) {
+            completedTasks++;
+        } else {
+            incompletedTasks++;
+        }
+    });
+
+	const totalDeletedTasks = deletedTasks;
+
+    document.getElementById("iTask").innerText = incompletedTasks;
+    document.getElementById("cTask").innerText = completedTasks;
+    document.getElementById("dTask").innerText = totalDeletedTasks;
 }
 
 // Function to save tasks to local storage
@@ -83,7 +127,7 @@ function getTask(){
 		taskArray.push(Task[index]);
 	}
 }
-getTask();
+
 
 // Function to add a new task
 function addTask() {
@@ -107,6 +151,8 @@ function addTask() {
 
 	inputBox.value = "";
 	inputBox.focus();
+
+	updateStatistics();
 }
 
 // Function to handle "Enter" key press for adding a task
@@ -124,3 +170,7 @@ function showAlert(message) {
 
 addBtn.addEventListener("click", addTask);
 inputBox.addEventListener("keyup", clickEnter);
+
+getDeletedTasksCount();
+
+getTask();
