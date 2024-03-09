@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
+<!----------------------------------------------------------Nav bar-------------------------------------------------------------------------------------------->
     <nav class="navbar">
         <h1>To-Do List</h1>
         <div id="helpIcon"><i class="fa-solid fa-circle-question"></i>Help</div>
-        <div id="helpCard">
+            <div id="helpCard">
             <div class="content">
                 <p><i class="fa-solid fa-check"></i>Single click to complete the task</p>
                 <p><i class="fa-solid fa-rotate-left"></i>Click on a completed task to undo the task</p>
@@ -22,6 +23,7 @@
         </div>
     </nav>
     <div id="blurBackground"></div>
+<!----------------------------------------------------------Container------------------------------------------------------------------------------------------>
 	<div id="container">
 		<div class="inputContainer">
 			<input type="text" id="inputBox" placeholder="Enter New Task">
@@ -30,6 +32,25 @@
         <div id="alertMessage"></div>
 		<div id="taskContainer"></div>
 	</div>
+
+    <section class="statistics">
+        <h1>Statistics</h1>
+        <div class="taskStatus">
+            <div class="incompletedTask">
+                <p>Incompleted Task</p>
+                <h1 id="iTask">0</h1>
+            </div>
+            <div class="completedTask">
+                <p>Completed Task</p>
+                <h1 id="cTask">0</h1>
+            </div>
+            <div class="deletedTask">
+                <p>Deleted Task</p>
+                <h1 id="dTask">0</h1>
+            </div>           
+        </div>
+    </section><br>
+<!----------------------------------------------------------Footer--------------------------------------------------------------------------------------------->
     <footer>
         <div class="column one">
             <h2>Contact Us</h2>
